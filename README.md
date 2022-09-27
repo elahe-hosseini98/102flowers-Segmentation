@@ -1,2 +1,6 @@
 # 102flowers-Segmentation
-102flowers segmentation using U-Net
+In this project I did a degmentation task using U-Net on 102flowers dataset.<br>
+The inputs of this network are normalized to values ​​between 0 and 1. And the activation function used in all layers is elu. In general, the unet network is made of two parts: contracting path and expansive path. In the expansive path, the normal cnn architecture is used, including a series of con2d with kernel 3 in 3 and given to the act func elu, as well as maxpool with stride 2.
+But each step of the expansive path first includes an up-convolution, which performs an upsampling on its input and halves the feature map, and then concatenation, which combines this new feature map with a series of corresponding feature maps in a U shape, and then Kano 3 In 3, it works with the elu activity function.<br>
+In total, there are 18 conv layers in my used model.<br>
+The loss function I used is **binary-cross-entropy**, which attempts to measure the differences in information content between the actual and predicted image masks (giving equal weight to pixel values ​​0 and 1). And for this reason, it is considered one of the good methods in image segmentation applications. And since my masks are binary, this was good for me.
